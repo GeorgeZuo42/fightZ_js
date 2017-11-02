@@ -1,4 +1,0 @@
-type:login
-username:XXX
-
-type:skill

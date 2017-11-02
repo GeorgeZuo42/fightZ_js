@@ -15,7 +15,15 @@ function battle_end(self, params) {
 function battle_enter(self, params) {
     handler_room.get_room(self.room_id).broadcast("aoi_enter", Array.from(fighters.values()));
 }
+function battle_action(self, params) {
+    if (params === null || params === undefined) {
+        params = {};
+    }
+    params.guid = self.guid;
+    handler_room.get_room(self.room_id).broadcast("battle_action", params);
+}
 function battle_move(self, params) {
+    //console.log("1 "+Date.now());
     fighters.get(self.guid).pos_x = params['pos_x'];
     fighters.get(self.guid).pos_y = params['pos_y'];
     fighters.get(self.guid).angle = params['angle'];
@@ -26,12 +34,15 @@ function battle_move(self, params) {
             result.push({
                 "guid": item.guid,
                 "pos_x": item.pos_x, "pos_y": item.pos_y,
-                "angle": item.angle, "speed": item.speed
+                "angle": item.angle, "speed": item.speed,
+                "timestamp": params["timestamp"]
             })
     });
     handler_room.get_room(self.room_id).broadcast("aoi_sync", result);
+    //console.log("2 "+Date.now());
 }
 exports.battle_enter = battle_enter;
 exports.battle_start = battle_start;
 exports.battle_end = battle_end;
 exports.battle_move = battle_move;
+exports.battle_action = battle_action;

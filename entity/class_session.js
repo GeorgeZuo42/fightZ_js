@@ -13,7 +13,7 @@ class Session extends Base {
         result.type = _type;
         result.status = _status;
         result.message = _message;
-        console.log("resp " + this.socket.remoteAddress + "@" + this.socket.remotePort + " " + JSON.stringify(result));
+        //console.log("resp " + this.socket.remoteAddress + "@" + this.socket.remotePort + " " + JSON.stringify(result));
         this.socket.write(JSON.stringify(result) + '\n');
     }
 

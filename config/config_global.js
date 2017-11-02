@@ -3,6 +3,6 @@ var config_global = {
     username: 'admin',
     password: 'admin',
     host: 'localhost',
-    MAX_ROOM_CAPACITY: 1,
+    MAX_ROOM_CAPACITY: 2,
 }
 module.exports = config_global;

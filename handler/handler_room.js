@@ -23,7 +23,8 @@ function room_join(self, params) {
 }
 
 function room_leave(self, params) {
-    rooms.get(room_id).members.delete(self.guid);
+    if (rooms.has(self.room_id))
+        rooms.get(self.room_id).members.delete(self.guid);
     self.room_id = 0;
     console.log("room_leave");
 }
