@@ -14,6 +14,7 @@ function match_join(self, params) {
             handler_room.room_join(mgr_session.getSessionByID(guid), { 'room_id': room_id });
         }
         match_queue.clear();
+        
         handler_battle.battle_start(self, { 'room_id': room_id });
         handler_battle.battle_enter(self, "");
     }

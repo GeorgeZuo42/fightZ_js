@@ -11,7 +11,7 @@ function online_join(self, params) {
     }
     else {
         online_players.set(self.guid, new OnlinePlayer(params["username"]));
-        self.resp("online_join", "succ", self.guid);
+        self.resp("online_join", "succ", { 'guid': self.guid });
     }
 }
 function online_leave(self, params) {

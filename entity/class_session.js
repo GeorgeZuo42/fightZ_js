@@ -3,6 +3,7 @@ class Session extends Base {
     constructor(_guid, _socket) {
         super();
         this.guid = _guid;
+        this.seed = 0;
         this.room_id = 0;
         this.socket = _socket;
         return super.safe_obj();
@@ -12,7 +13,7 @@ class Session extends Base {
         var result = new Object();
         result.type = _type;
         result.status = _status;
-        result.message = _message;
+        result.message = JSON.stringify(_message);
         //console.log("resp " + this.socket.remoteAddress + "@" + this.socket.remotePort + " " + JSON.stringify(result));
         this.socket.write(JSON.stringify(result) + '\n');
     }

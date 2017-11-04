@@ -6,6 +6,7 @@ class Room extends Base {
         super();
         this.members = new Set();
         this.room_id = room_id;
+        this.seed = Date.now();
         return super.safe_obj();
     }
     broadcast(type, message) {
